@@ -1,0 +1,6 @@
+- [ ] Change data filename and format
+- [ ] Slurm based fine-tuning 
+- [ ] uplaod to s3
+- [ ] dockerized for inferencing (sagemaker?)
+- [ ] API gateway.
+- [ ] test
