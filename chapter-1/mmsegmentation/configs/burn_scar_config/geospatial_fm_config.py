@@ -17,7 +17,7 @@ checkpoint = os.getenv("CHECKPOINT_PATH", "")
 user_name = os.environ.get("USER")
 experiment = "burn_scars"
 
-work_dir = f"/p/project/training2308/{user_name}/{experiment}"
+work_dir = f"/p/project/training2308/{user_name}/{experiment}/"
 
 save_path = work_dir
 
