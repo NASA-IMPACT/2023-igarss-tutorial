@@ -26,7 +26,7 @@ _base_ = ["../_base_/default_runtime.py", "../_base_/schedules/schedule_160k.py"
 dataset_type = "GeospatialDataset"
 # dataset_type = 'CustomDataset'
 
-data_root = f"/p/project/training2308/{usecase}/"  # changed data root folder
+data_root = f"/p/project/training2308/{experiment}/"  # changed data root folder
 # TODO: @Hamed, @Steve, this is just an example normalization and not adjusted to your data - pls update with your values
 img_norm_cfg = dict(
     means=[
