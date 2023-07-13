@@ -27,6 +27,3 @@ srun -p training2308 \
     --kill-on-bad-exit=1 \
     ${SRUN_ARGS} \
     python -u mmsegmentation/tools/train.py mmsegmentation/configs/burn_scar_config/geospatial_fm_config.py --launcher="slurm" --cfg-options 'find_unused_parameters'=True
-
-~
-~
