@@ -2,19 +2,15 @@ import os
 
 gfm_model_name = '${gfm_ckpt}'
 
-experiment_name = '${exp_name}'
-project_name = '${project_name}'
+experiment = "flood"
 
-mmseg_path = os.getenv('MMSEG_PATH', '/workspace/mmsegmentation/')
-
-work_dir = data_path + 'fine-tune-checkpoints/' + experiment_name
-save_path = data_path + 'fine-tune-checkpoints/' + experiment_name
+work_dir = f'fine-tune-checkpoints/{experiment}'
+save_path = f'fine-tune-checkpoints/{experiment}'
 
 ### Configs
 # data loader related
 num_frames = int(os.getenv('NUM_FRAMES', 1))
 img_size = int(os.getenv('IMG_SIZE', 224))
-bands = ["B02", "B03", "B04", "B05"]
 num_workers = int(os.getenv('DATA_LOADER_NUM_WORKERS', 2))
 
 # model related
@@ -27,7 +23,6 @@ checkpoint = os.getenv("CHECKPOINT_PATH", "")
 
 _base_ = ["../_base_/default_runtime.py", "../_base_/schedules/schedule_160k.py"]
 
-experiment = "flood"
 dataset_type = 'GeospatialDataset'
 data_root = f"/p/project/training2308/{experiment}/"  # changed data root folder
 
