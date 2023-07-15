@@ -7,7 +7,7 @@ LABEL com.amazonaws.sagemaker.capabilities.accept-bind-to-port=true
 
 
 # Upgrade installed packages
-RUN apt-get update && apt-get upgrade -y && apt-get clean
+RUN apt-get update && apt-get upgrade -y && apt-get clean && apt-get -y install libgl1
 
 # Python package management and basic dependencies
 RUN apt-get install -y curl python3.9 python3.9-dev python3.9-distutils
@@ -39,15 +39,16 @@ COPY code/requirements.txt /opt/code/requirements.txt
 # Install MXNet, MMS, and SageMaker Inference Toolkit to set up MMS
 RUN pip3 --no-cache-dir install -r /opt/code/requirements.txt
 
-RUN mim install mmcv==1.5.0 mmcv-full==1.5.0 mmsegmentation==0.30.0 mmengine==0.7.4 mmdet==2.22.0
-
+RUN mim install mmcv==1.5.0 mmcv-full==1.5.0 mmengine==0.7.4 mmdet mmsegmentation==0.30.0
 COPY code/ /opt/code
 
 RUN cd /opt/code/mmsegmentation/ && \
-       rm -rf *.egg-info/ build/ dist/ \
-       && pip3 uninstall -y mmseg \
-       && python3 setup.py bdist_wheel \
-       && pip install dist/mmsegmentation-0.21.0-py3-none-any.whl
+      rm -rf *.egg-info/ build/ dist/ \
+      && pip3 uninstall -y mmseg \
+      && python3 setup.py bdist_wheel \
+      && pip install dist/mmsegmentation-0.21.0-py3-none-any.whl
+
+RUN pip3 uninstall -y typing
 
 COPY code/dockerd-entrypoint.py /usr/local/bin/dockerd-entrypoint.py
 RUN chmod +x /usr/local/bin/dockerd-entrypoint.py
