@@ -36,7 +36,7 @@ RUN update-alternatives --install /usr/local/bin/pip pip /usr/local/bin/pip3 1
 COPY code/requirements.txt /opt/code/requirements.txt
 
 # Install MXNet, MMS, and SageMaker Inference Toolkit to set up MMS
-RUN pip3 --no-cache-dir install /opt/code/requirements.txt
+RUN pip3 --no-cache-dir install -r /opt/code/requirements.txt
 
 RUN mim install mmcv==1.5.0 mmcv-full==1.5.0 mmsegmentation==0.30.0 mmengine==0.7.4
 
