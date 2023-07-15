@@ -15,7 +15,7 @@ module --force purge
 
 ml Stages/2023
 
-source /p/project/training2308/gurung1/miniconda3/bin/activate py39
+source /p/project/training2308/<username>/miniconda3/bin/activate py39
 
 echo "Starting training"
 

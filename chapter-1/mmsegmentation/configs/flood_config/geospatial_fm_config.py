@@ -24,7 +24,7 @@ checkpoint = os.getenv("CHECKPOINT_PATH", "")
 _base_ = ["../_base_/default_runtime.py", "../_base_/schedules/schedule_160k.py"]
 
 dataset_type = 'GeospatialDataset'
-data_root = f"/p/project/training2308/{experiment}/"  # changed data root folder
+data_root = f"/p/project/training2308/data/{experiment}/"  # changed data root folder
 
 ###----- Changed depending on data source
 #--   Needs to be changed to use GeoDN data
