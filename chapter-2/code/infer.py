@@ -125,7 +125,9 @@ class Infer:
         :param model_dir: Path to the directory with model artifacts
         :return: model config file
         """
-        username, experiment = os.path.basename(model_dir).replace('.pth', '').split('_')
+        splits = os.path.basename(model_dir).replace('.pth', '').split('_')
+        username = splits[0] 
+        experiment = "_".join(splits[1:])
         self.config_filename = CONFIG_DIR.format(experiment=experiment)
         logging.info("Model config for user {}: {}".format(username, self.config_filename))
 
