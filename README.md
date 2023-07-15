@@ -1,6 +1,6 @@
 - [ ] Change data filename and format
-- [ ] Slurm based fine-tuning 
-- [ ] uplaod to s3
-- [ ] dockerized for inferencing (sagemaker?)
+- [ ] Slurm based fine-tuning
+- [ ] Upload to s3
+- [ ] Dockerized for inferencing (sagemaker?)
 - [ ] API gateway.
-- [ ] test
+- [ ] Test
