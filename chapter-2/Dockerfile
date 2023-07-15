@@ -22,9 +22,10 @@ RUN update-alternatives --set python /usr/bin/python3.9
 RUN apt-get -y install --no-install-recommends \
     build-essential \
     ca-certificates \
+    gcc \
+    mono-mcs \
     openjdk-8-jdk-headless \
     curl \
-    vim \
     && rm -rf /var/lib/apt/lists/* \
     && python --version \
     && curl -O https://bootstrap.pypa.io/get-pip.py \
@@ -38,7 +39,7 @@ COPY code/requirements.txt /opt/code/requirements.txt
 # Install MXNet, MMS, and SageMaker Inference Toolkit to set up MMS
 RUN pip3 --no-cache-dir install -r /opt/code/requirements.txt
 
-RUN mim install mmcv==1.5.0 mmcv-full==1.5.0 mmsegmentation==0.30.0 mmengine==0.7.4
+RUN mim install mmcv==1.5.0 mmcv-full==1.5.0 mmsegmentation==0.30.0 mmengine==0.7.4 mmdet==2.22.0
 
 COPY code/ /opt/code
 
