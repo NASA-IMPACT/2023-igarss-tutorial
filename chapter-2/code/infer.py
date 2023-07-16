@@ -57,9 +57,11 @@ class Infer:
         self.initialized = True
         properties = context.system_properties
         # Contains the url parameter passed to the load request
-        self.checkpoint_filename = properties.get("model_dir")
+        model_path = properties.get("model_dir")
+        checkpoint_filename = context.model_name
+        logging.info("Model directory: {}, {}".format(checkpoint_filename, properties))
         # gpu_id = properties.get("gpu_id")
-        self.load_model_config_file(self.checkpoint_filename)
+        self.load_model_config_file(model_path, checkpoint_filename)
 
         # load model
         self.load_model()
@@ -117,7 +119,7 @@ class Infer:
             result = self.model(return_loss=False, rescale=True, **data)
         return result
 
-    def load_model_config_file(self, model_dir):
+    def load_model_config_file(self, model_path, model_name):
         """
         Get the model config based on the selected model filename.
         This assume config exist in the CONFIG_DIR
@@ -125,10 +127,12 @@ class Infer:
         :param model_dir: Path to the directory with model artifacts
         :return: model config file
         """
-        splits = os.path.basename(model_dir).replace('.pth', '').split('_')
+        splits = os.path.basename(model_name).replace('.pth', '').split('_')
         username = splits[0] 
         experiment = "_".join(splits[1:])
+
         self.config_filename = CONFIG_DIR.format(experiment=experiment)
+        self.checkpoint_filename = f"{model_path}/{model_name}"
         logging.info("Model config for user {}: {}".format(username, self.config_filename))
 
     def postprocess(self, results, files):
