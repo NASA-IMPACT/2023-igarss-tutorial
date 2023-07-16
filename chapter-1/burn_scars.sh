@@ -4,8 +4,8 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --account=training2308
-#SBATCH --output=output.out
-#SBATCH --error=error.er
+#SBATCH --output=output_burn_scars.out
+#SBATCH --error=error_burn_scars.er
 #SBATCH --time=2:00:00
 #SBATCH --job-name=TEST
 #SBATCH --gres=gpu:1 --partition=dc-gpu
