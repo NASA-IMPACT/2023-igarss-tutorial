@@ -60,6 +60,7 @@ class Infer:
         model_path = properties.get("model_dir")
         checkpoint_filename = context.model_name
         logging.info("Model directory: {}, {}".format(checkpoint_filename, properties))
+        logging.info(f"Configuration::: {list(os.walk(model_path))}" )
         # gpu_id = properties.get("gpu_id")
         self.load_model_config_file(model_path, checkpoint_filename)
 
@@ -127,6 +128,10 @@ class Infer:
         :param model_dir: Path to the directory with model artifacts
         :return: model config file
         """
+        from glob import glob
+        model_files = glob(f"{model_path}/*")
+        logging.info(f"Configuration:: {model_files}")
+        model_name = model_files[-1]
         splits = os.path.basename(model_name).replace('.pth', '').split('_')
         username = splits[0] 
         experiment = "_".join(splits[1:])
