@@ -15,7 +15,7 @@ tubelet_size = 1
 checkpoint = os.getenv("CHECKPOINT_PATH", "")
 
 user_name = os.environ.get("USER")
-experiment = "flood_hls"
+experiment = "flood"
 
 work_dir = f"/p/project/training2308/{user_name}/{experiment}/"
 
@@ -29,7 +29,7 @@ dataset_type = "GeospatialDataset"
 data_root = f"/p/project/training2308/data/{experiment}/"  # changed data root folder
 # TODO: @Hamed, @Steve, this is just an example normalization and not adjusted to your data - pls update with your values
 
-img_norm_cfg = dict(means=[0.04602613, 0.0783096 , 0.07235605, 0.10509588], stds=[0.04113481, 0.04394913, 0.04916184, 0.04728798]) # based on the band order of 2,3,4,5
+img_norm_cfg = dict(means=[0.09840321, 0.12590889, 0.11499668,  0.31537666], stds=[0.0617847 , 0.05957831, 0.06571424, 0.09343068])
 ## bands = [0,1,2,3]
 bands = [2,1,0,3]
 
@@ -275,4 +275,4 @@ model = dict(
     test_cfg=dict(mode="slide", stride=(128, 128), crop_size=(224, 224), frozen=False),
 )
 
-epoch_config = dict(epochs=200)
+epoch_config = dict(epochs=50)
