@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 #!/usr/bin/env bash
 # Slurm job configuration
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=1
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
 #SBATCH --account=training2308
 #SBATCH --output=output_burn_scars.out
 #SBATCH --error=error_burn_scars.er
 #SBATCH --time=2:00:00
 #SBATCH --job-name=TEST
-#SBATCH --gres=gpu:1 --partition=dc-gpu
+#SBATCH --gres=gpu:4 --partition=dc-gpu
 #SBATCH --hint=nomultithread
 
 module --force purge
